@@ -11,7 +11,7 @@ router.get('', (req, res) => {
     res.status(200).json(data);
   })
   .catch(error => {
-    res.status(500).json({ error: 'The posts information could not be retrieved. ' + error.message })
+    res.status(500).json({ error: 'The actions information could not be retrieved. ' + error.message })
   })
 });
 

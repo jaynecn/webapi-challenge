@@ -38,14 +38,26 @@ router.post('/', (req, res) => {
 })
 
 // DELETE request
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
   db.remove(req.params.id)
   .then(data => {
     res.status(200).json(data);
   })
   .catch(error => {
-    res.status(500).json({ error: 'The post could not be removed ' + error.message});
+    res.status(500).json({ error: 'The post with this specific ID could not be removed ' + error.message});
   })
+});
+
+// PUT request
+router.put('/:id', (req, res) => {
+  const changes = req.body;
+  db.update(req.params.id, changes)
+    .then(data => {
+      res.status(200).json(changes);
+    })
+    .catch(error => {
+      res.status(500).json({ error: 'The pos information could not be modified ' + error.message})
+    })
 });
 
 
