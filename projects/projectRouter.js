@@ -27,8 +27,8 @@ router.get('/:id', (req, res) => {
 
 
 //project actions
-router.get('/', (req, res) => {
-  db.get(req.params.id)
+router.get('/:id/actions', (req, res) => {
+  db.getProjectActions(req.params.id)
   .then(data => {
     res.status(200).json(data);
   })
