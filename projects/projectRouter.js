@@ -6,7 +6,7 @@ const router = express.Router();
 
 // GET requests
 router.get('/', (req, res) => {
-  db.get(req.body)
+  db.get()
   .then(data => {
     res.status(200).json(data);
   })
@@ -16,6 +16,18 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+  db.get(req.params.id)
+  .then(data => {
+    res.status(200).json(data);
+  })
+  .catch(error => {
+    res.status(500).json({ error: 'The project information could not be retrieved. ' + error.message})
+  })
+});
+
+
+//project actions
+router.get('/', (req, res) => {
   db.get(req.params.id)
   .then(data => {
     res.status(200).json(data);
