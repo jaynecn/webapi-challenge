@@ -25,14 +25,20 @@ In this challenge, create a web API around the following resources: `Projects` a
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+      Express Router - we can map incoming requests to the correct request handler (CRUD operation) based on the URL
+	Middleware - using middleware for some authentication or logging tasks keeps your code DRY.
 
 - [ ] Describe Middleware?
+      Middleware are functions that utilise the request and response to perform operations.  They can move onto the next middleware, or send an error response back.  You can use built-in middleware, third-party middleware or create your own custom middleware.
 
 - [ ] Describe a Resource?
+      They are the nouns in an application. For example, users, posts, products, etc.
 
 - [ ] What can the API return to help clients know if a request was successful?
+    They can return HTTP status codes such as 200(OK) or 201(Created) we can also add a json attached to that eg. res.send(200).json({message: ‘this was successful’})
 
 - [ ] How can we partition our application into sub-applications?
+    Using Express Router we can group similar URL requests eg. api/:id, api/:id/posts onto one seperate js file eg.idRoutes.js.  We then connect that file to the central file (usually index.js) using require eg. const idRoutes = require(‘./id/idRoutes); server.use(‘/id’, idRoutes);
 
 ## Project Setup
 
